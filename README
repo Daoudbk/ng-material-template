@@ -1,9 +1,0 @@
-README
-======
-
-* Web boilerplate includes:
-
-  - Google App Engine bootstrap (Python 2.7, Django 1.3)
-  - jQuery 1.8.1
-  - Twitter bootstrap 2.1.1 (It includes Normalize.css)
-  - HTML5Shiv 3.6.2pre
