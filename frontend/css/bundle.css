@@ -6,6 +6,17 @@ body {
   opacity: 0;
 }
 
+#home-view,
+#dashboard-view {
+  opacity: 0;
+  animation: fade-in .5s ease-in forwards;
+  -webkit-animation: fade-in .5s ease-in forwards;
+}
+
+#dashboard-view {
+  margin-top: 20px;
+}
+
 /* ==========================================================================
    Side navigation styles
    ========================================================================== */
@@ -60,7 +71,6 @@ md-sidenav md-list .active {
 }
 
 [role=main] md-content ui-view[layout-padding] {
-  padding-top: 27px;
   padding-left: 27px;
   padding-right: 27px;
 }
@@ -72,4 +82,26 @@ md-sidenav md-list .active {
 
 [role=main] md-toolbar h3 {
   margin-left: 14px;
+}
+
+/* ==========================================================================
+   Keyframe animation styles
+   ========================================================================== */
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
