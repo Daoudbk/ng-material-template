@@ -4,13 +4,15 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
+    cssmin: {
+      minify: {
+        files: {
+          'frontend/css/min/bundle.min.css': ['frontend/css/bundle.css']
+        }
+      }
+    },
+
     shell: {
-      css_compile: {
-        command: [
-          'cd frontend/css/yui-compressor',
-          'make compile'
-        ].join('&&')
-      },
       js_compile: {
         command: [
           'cd frontend/js/closure-compiler',
@@ -37,7 +39,7 @@ module.exports = function(grunt) {
         files: [
           'frontend/css/*.css'
         ],
-        tasks: ['shell:css_compile']
+        tasks: ['cssmin']
       },
       js: {
         files: [
@@ -82,11 +84,13 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-angular-templates');
 
-  grunt.loadNpmTasks("grunt-append-sourcemapping");
+  grunt.loadNpmTasks('grunt-append-sourcemapping');
+
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   grunt.registerTask('dev', [
     'ngtemplates',
-    'shell:css_compile',
+    'cssmin',
     'shell:js_compile',
     'append-sourcemapping',
     'watch'
@@ -94,7 +98,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('prod', [
     'ngtemplates',
-    'shell:css_compile',
+    'cssmin',
     'shell:js_compile',
     'append-sourcemapping'
   ]);
